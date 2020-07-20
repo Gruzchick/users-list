@@ -1,0 +1,86 @@
+const path = require('path');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { StatsWriterPlugin } = require('webpack-stats-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
+
+const appDirectory = path.resolve(__dirname, '../');
+const imageInlineSizeLimit = '10000';
+
+const config = {
+  context: appDirectory,
+  mode: 'production',
+
+  entry: ['./src/index.tsx'],
+  bail: true,
+  devtool: 'source-map',
+  output: {
+    path: path.resolve(appDirectory, 'dist'),
+    publicPath: '/',
+    filename: 'static/js/[name].[contenthash:8].js',
+    chunkFilename: 'static/js/[name].[contenthash:8].chunk.js',
+  },
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx', '.json'],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        enforce: 'pre',
+        use: {
+          loader: 'eslint-loader',
+        },
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        loader: 'url-loader',
+        options: {
+          limit: imageInlineSizeLimit,
+          name: 'static/media/[name].[hash:8].[ext]',
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+  optimization: {
+    moduleIds: 'deterministic',
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: 'body',
+      template: path.resolve(appDirectory, 'public/index.html'),
+    }),
+    new CleanWebpackPlugin(),
+    new ForkTsCheckerWebpackPlugin({ async: false }),
+    new StatsWriterPlugin({
+      stats: {
+        all: true,
+      },
+    }),
+    new StylelintPlugin({ files: './src/**/*.{ts,tsx}' }),
+  ],
+};
+
+module.exports = config;
