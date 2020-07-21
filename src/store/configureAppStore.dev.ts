@@ -2,7 +2,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { routerMiddleware } from 'connected-react-router';
 import logger from 'redux-logger';
 
-import { history } from '../history';
+import { history } from '../app/history';
 import { rootReducer } from './rootReducer';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type

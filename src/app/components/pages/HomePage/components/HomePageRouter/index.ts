@@ -1,0 +1,1 @@
+export { HomePageRouter } from './HomePageRouter';
