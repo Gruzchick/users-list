@@ -106,7 +106,8 @@ const config = {
   devServer: {
     contentBase: path.resolve(appDirectory, 'dist'),
     hot: true,
-    port: 3000,
+    port: 9000,
+    host: '0.0.0.0',
     historyApiFallback: true,
   },
 };

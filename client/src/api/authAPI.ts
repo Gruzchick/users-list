@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-const API_URL = 'https://reqres.in/api';
+import { API_URL } from './constants';
 
 export type Credentials = {
   email: string;

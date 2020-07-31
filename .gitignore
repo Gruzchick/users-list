@@ -1,14 +1,10 @@
-# tools
 .idea
 
-# dependencies
+clinet/node_modules
+server/node_modules
 node_modules
 
-# production
-dist
+client/dist
+server/dist
 
-yarn-debug.log*
-yarn-error.log*
-
-.eslintcache
-.stylelintcache
+*.log

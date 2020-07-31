@@ -1,4 +1,8 @@
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
+
+import 'leda/dist/styles/reset.css';
+import 'leda/dist/styles/leda.light.css';
+import 'leda/dist/styles/helpers.css';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {
@@ -36,7 +40,7 @@ const jss = create({
 const App: FC = () => {
   return (
     <Fragment>
-      <CssBaseline />
+      {/*<CssBaseline />*/}
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <StylesProvider jss={jss}>

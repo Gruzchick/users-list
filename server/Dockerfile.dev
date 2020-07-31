@@ -1,0 +1,6 @@
+FROM node:erbium
+
+WORKDIR '/service'
+
+EXPOSE 3000
+
