@@ -4899,10 +4899,10 @@ known-css-properties@^0.19.0:
   resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.19.0.tgz#5d92b7fa16c72d971bda9b7fe295bdf61836ee5b"
   integrity sha512-eYboRV94Vco725nKMlpkn3nV2+96p9c3gKXRsYqAJSswSENvBhN7n5L+uDhY58xQa0UukWsDMTGELzmD8Q+wTA==
 
-leda@^0.22.0:
-  version "0.22.0"
-  resolved "https://registry.yarnpkg.com/leda/-/leda-0.22.0.tgz#080f3b2e63cddf490cda55605d8e164950b4c0bb"
-  integrity sha512-fVgt5c1QOStd+SFK011cJ9DhfNYN4r1Lr+M1958CDAtieY9H4AS4OrJQCkkDaaZG6cyCim2m+owerCmQqYm26A==
+korus-ui@^0.26.0:
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/korus-ui/-/korus-ui-0.26.0.tgz#67bf27f3546c288e330cbb36b0c9f7b1b0c1f468"
+  integrity sha512-IvwvXoDVBf1KD48BFdWViZFh7AxgHuIRc5kAQK9d2J6sHUHvd0E7lJ1fs4k3VqBqDUUzNGY+2lWWo7+L5h2wOQ==
   dependencies:
     attr-accept "2.1.0"
     classnames "2.2.6"

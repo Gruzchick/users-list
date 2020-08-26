@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -102,11 +103,15 @@ const config = {
         'node_modules/.cache/stylelintcache',
       ),
     }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.SERVER_PORT': JSON.stringify(process.env.SERVER_PORT),
+    }),
   ],
   devServer: {
     contentBase: path.resolve(appDirectory, 'dist'),
     hot: true,
-    port: 9000,
+    port: process.env.PORT,
     host: '0.0.0.0',
     historyApiFallback: true,
   },

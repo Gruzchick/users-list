@@ -1,10 +1,10 @@
-// import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
-import 'leda/dist/styles/reset.css';
-import 'leda/dist/styles/leda.light.css';
-import 'leda/dist/styles/helpers.css';
+import 'korus-ui/dist/styles/reset.css';
+import 'korus-ui/dist/styles/helpers.css';
+import 'korus-ui/dist/styles/leda.light.css';
 
-import CssBaseline from '@material-ui/core/CssBaseline';
+//import CssBaseline from '@material-ui/core/CssBaseline';
 import {
   jssPreset,
   MuiThemeProvider,

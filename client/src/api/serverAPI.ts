@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 
-const API_URL = 'http://localhost:3000/';
+const API_URL = `http://localhost:${process.env.SERVER_PORT}`;
 
 type R = {
   hello: string;
@@ -8,7 +8,7 @@ type R = {
 
 class ServerAPI {
   async hello(): Promise<AxiosResponse<R>> {
-    return axios.get<R>(`${API_URL}`);
+    return axios.get<R>(`${API_URL}/users/1`);
   }
 }
 

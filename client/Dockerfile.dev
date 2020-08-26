@@ -1,6 +1,5 @@
 FROM node:erbium
 
-WORKDIR '/service'
+WORKDIR '/client'
 
 EXPOSE 9000
-

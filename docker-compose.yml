@@ -1,0 +1,62 @@
+version: "3.8"
+services:
+  mongo:
+    build:
+      context: ./mongo
+    image: ${MONGO_IMAGE_NAME}
+    container_name: ${MONGO_CONTAINER_NAME}
+    ports:
+      - ${MONGO_PORT}:${MONGO_PORT_ON_HOST}
+    volumes:
+      - db_data:/data/db
+    environment:
+      MONGODB_PASS: ${MONGO_PASS}
+      MONGODB_USER: ${MONGO_USER_NAME}
+      MONGODB_DATABASE: ${MONGO_DB_NAME}
+    command: ["/bin/run.sh"]
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    image: ${SERVER_IMAGE_NAME}
+    container_name: ${SERVER_CONTAINER_NAME}
+    depends_on:
+      - mongo
+    environment:
+      NODE_ENV: ${SERVER_NODE_ENV}
+      PORT: ${SERVER_PORT}
+      DB_USER_NAME: ${MONGO_USER_NAME}
+      DB_PASSWORD: ${MONGO_PASS}
+      DB_URL: ${MONGO_CONTAINER_NAME}
+      DB_PORT: ${MONGO_PORT}
+      DB_NAME: ${MONGO_DB_NAME}
+      DB_AUTH_SOURCE: ${MONGO_AUTH_SOURCE}
+      JWT_SECRET: ${SERVER_JWT_SECRET}
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT_ON_HOST}
+      - 5858:5858
+    volumes:
+      - ./server:/server
+    command: yarn start:debug
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    depends_on:
+      - server
+      - mongo
+    environment:
+      NODE_ENV: ${CLIENT_NODE_ENV}
+      PORT: ${CLIENT_PORT}
+      SERVER_PORT: ${SERVER_PORT}
+    image: ${CLIENT_IMAGE_NAME}
+    container_name: ${CLIENT_CONTAINER_NAME}
+    ports:
+      - ${CLIENT_PORT}:${CLIENT_PORT_ON_HOST}
+    volumes:
+      - ./client:/client
+    command: yarn start
+volumes:
+  db_data:
+    name: ${MONGO_DATA_VOLUME}
+    external: false

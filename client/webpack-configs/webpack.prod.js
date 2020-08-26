@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -80,6 +81,10 @@ const config = {
       },
     }),
     new StylelintPlugin({ files: './src/**/*.{ts,tsx}' }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.SERVER_PORT': JSON.stringify(process.env.SERVER_PORT),
+    }),
   ],
 };
 

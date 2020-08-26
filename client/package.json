@@ -80,7 +80,7 @@
     "html-webpack-plugin": "^4.3.0",
     "i18next": "19.5.1",
     "jss-plugin-template": "^10.3.0",
-    "leda": "^0.22.0",
+    "korus-ui": "^0.26.0",
     "lint-staged": "10.2.11",
     "prettier": "^2.0.5",
     "qs": "^6.9.4",

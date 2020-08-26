@@ -9,6 +9,9 @@
     "lint-staged": "^10.2.11"
   },
   "scripts": {
+    "install:client": "yarn --cwd ./client install",
+    "install:server": "yarn --cwd ./server install",
+    "install:all": "yarn install && yarn run install:client && yarn run install:server",
     "lint:staged:client": "yarn --cwd ./client lint:staged",
     "lint:staged:server": "yarn --cwd ./server lint:staged",
     "checktypes:client": "yarn --cwd ./client checktypes",
@@ -20,8 +23,8 @@
     "fix:client": "yarn --cwd ./client fix",
     "fix:server": "yarn --cwd ./server fix",
     "fix": "yarn fix:client; yarn fix:server",
-    "start": "docker-compose -f docker-compose.dev.yml up",
-    "start:build": "docker-compose -f docker-compose.dev.yml up --build"
+    "start": "docker-compose up",
+    "start:build": "docker-compose up --build"
   },
   "husky": {
     "hooks": {
