@@ -5,13 +5,14 @@ export const wrapper = css`
   flex-direction: column;
   align-items: center;
   margin-top: 64px;
-  margin-top: 100px;
 `;
+
 export const title = css`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
+
 export const titleImage = css`
   margin: 8px;
   background-color: #f50057;

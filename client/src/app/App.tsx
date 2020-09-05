@@ -1,10 +1,6 @@
 import 'react-toastify/dist/ReactToastify.css';
 
-import 'korus-ui/dist/styles/reset.css';
-import 'korus-ui/dist/styles/helpers.css';
-import 'korus-ui/dist/styles/leda.light.css';
-
-//import CssBaseline from '@material-ui/core/CssBaseline';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import {
   jssPreset,
   MuiThemeProvider,
@@ -40,7 +36,7 @@ const jss = create({
 const App: FC = () => {
   return (
     <Fragment>
-      {/*<CssBaseline />*/}
+      <CssBaseline />
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <StylesProvider jss={jss}>

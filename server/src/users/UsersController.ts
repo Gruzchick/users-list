@@ -19,6 +19,7 @@ export class UsersController {
 
     return this.usersService.unsetPassword(newUser);
   }
+
   @Get(':userId')
   getUser() {
     // const { user } = req;

@@ -1,6 +1,6 @@
 import { Button } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import { Form as FomikForm, Formik } from 'formik';
+import { Form as FormikForm, Formik } from 'formik';
 import React, { FC, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -11,7 +11,7 @@ import { AppDispatch } from '../../../../../../store/configureAppStore.prod';
 import { FormikAttachedTextField } from '../../../../shared/FormikAttachedTextField';
 import { form, submitButton } from './styles';
 
-type Values = {
+type FormValues = {
   email: string;
   password: string;
 };
@@ -27,11 +27,11 @@ export const SignUpForm: FC = () => {
   const reduxDispatch: AppDispatch = useDispatch();
 
   const handleSubmit = useCallback(
-    async (values: Values) => {
-      const resultAction = await reduxDispatch(signUp(values));
+    async (formValues: FormValues) => {
+      const resultAction = await reduxDispatch(signUp(formValues));
 
       if (signUp.fulfilled.match(resultAction)) {
-        toast(`Registered with email: ${values.email}`, { type: 'success' });
+        toast(`Registered with email: ${formValues.email}`, { type: 'success' });
       } else if (signUp.rejected.match(resultAction) && resultAction.payload) {
         const errorMessage = resultAction.payload.error;
 
@@ -50,7 +50,7 @@ export const SignUpForm: FC = () => {
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
-      <FomikForm css={form} noValidate>
+      <FormikForm css={form} noValidate>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <FormikAttachedTextField
@@ -88,7 +88,7 @@ export const SignUpForm: FC = () => {
         >
           {'Sign Up'}
         </Button>
-      </FomikForm>
+      </FormikForm>
     </Formik>
   );
 };
