@@ -1,4 +1,4 @@
-export function getDBConnectionURI(config) {
+export function getDBConnectionURI(config): string {
   const user = config.get('db.user');
   const password = config.get('db.password');
   const url = config.get('db.url');

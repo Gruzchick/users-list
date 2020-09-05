@@ -1,6 +1,3 @@
 FROM node:erbium
 
 WORKDIR '/server'
-
-EXPOSE 3000
-
