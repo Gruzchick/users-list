@@ -2,6 +2,7 @@ import * as convict from 'convict';
 import * as path from 'path';
 
 export const config = convict({
+  // default value should be defined even if do not used, leave it an empty string
   env: {
     doc: 'Application environment',
     default: '',
