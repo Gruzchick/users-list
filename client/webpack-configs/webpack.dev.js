@@ -9,7 +9,7 @@ const appDirectory = path.resolve(__dirname, '../');
 const imageInlineSizeLimit = '10000';
 
 const config = {
-  mode: 'development',
+  mode: process.env.NODE_ENV,
   context: appDirectory,
 
   entry: ['./src/index.tsx'],
@@ -104,8 +104,8 @@ const config = {
       ),
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
-      'process.env.SERVER_PORT': JSON.stringify(process.env.SERVER_PORT),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      'process.env.API_URL': JSON.stringify(process.env.API_URL),
     }),
   ],
   devServer: {

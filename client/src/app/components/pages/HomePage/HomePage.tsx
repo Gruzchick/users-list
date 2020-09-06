@@ -12,7 +12,6 @@ import { useTheme } from 'emotion-theming';
 import React, { FC, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { signOut } from '../../../../store/auth/actions';
 import { AppDispatch } from '../../../../store/configureAppStore.prod';
 import { CustomTheme } from '../../../theme';
 import { HomePageNav } from './components/HomePageNav';
@@ -48,7 +47,7 @@ export const HomePage: FC = () => {
   }, []);
 
   const handleSignOut = useCallback(() => {
-    reduxDispatch(signOut());
+    // reduxDispatch(signOut());
   }, [reduxDispatch]);
 
   return (

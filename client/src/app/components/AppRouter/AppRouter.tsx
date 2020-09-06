@@ -1,14 +1,11 @@
 import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
-
-import { RootState } from '../../../store/rootReducer';
 import { AuthRoute } from './AuthRoute';
 import { NotAuthRoute } from './NotAuthRoute';
 
 export const AppRouter: FC = () => {
-  const { token } = useSelector((state: RootState) => state.auth);
+  // const { token } = useSelector((state: RootState) => state.auth);
 
-  if (token === null) {
+  if (true) {
     return <NotAuthRoute />;
   }
   return <AuthRoute />;

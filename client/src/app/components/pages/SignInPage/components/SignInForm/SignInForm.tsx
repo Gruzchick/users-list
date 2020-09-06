@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 
-import { signIn } from '../../../../../../store/auth/actions';
 import { AppDispatch } from '../../../../../../store/configureAppStore.prod';
 import { FormikAttachedTextField } from '../../../../shared/FormikAttachedTextField';
 import { form, submitButton } from './styles';
@@ -26,15 +25,15 @@ export const SignInForm: FC = () => {
 
   const handleSubmit = useCallback(
     async (values: Values) => {
-      const resultAction = await reduxDispatch(signIn(values));
-
-      if (signIn.fulfilled.match(resultAction)) {
-        toast('Success', { type: 'success' });
-      } else if (signIn.rejected.match(resultAction) && resultAction.payload) {
-        const errorMessage = resultAction.payload.error;
-
-        toast(errorMessage, { type: 'error' });
-      }
+      // const resultAction = await reduxDispatch(signIn(values));
+      //
+      // if (signIn.fulfilled.match(resultAction)) {
+      //   toast('Success', { type: 'success' });
+      // } else if (signIn.rejected.match(resultAction) && resultAction.payload) {
+      //   const errorMessage = resultAction.payload.error;
+      //
+      //   toast(errorMessage, { type: 'error' });
+      // }
     },
     [reduxDispatch],
   );

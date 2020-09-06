@@ -1,6 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { routerMiddleware } from 'connected-react-router';
-import logger from 'redux-logger';
 
 import { history } from '../app/history';
 import { rootReducer } from './rootReducer';
@@ -9,7 +8,7 @@ import { rootReducer } from './rootReducer';
 function configureAppStore() {
   const store = configureStore({
     reducer: rootReducer,
-    middleware: [...getDefaultMiddleware(), routerMiddleware(history), logger],
+    middleware: [...getDefaultMiddleware(), routerMiddleware(history)],
   });
 
   if (process.env.NODE_ENV !== 'production' && module.hot) {
