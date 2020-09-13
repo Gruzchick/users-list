@@ -3,6 +3,6 @@ export type CreateUserRequest = {
   password: string;
 };
 
-export type CreateUserResponse = {
-  token: string;
-};
+export type CreateUserResponse = {};
+
+export type GetUserResponse = {};

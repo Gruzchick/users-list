@@ -31,7 +31,9 @@ export const SignUpForm: FC = () => {
       const resultAction = await reduxDispatch(signUp(formValues));
 
       if (signUp.fulfilled.match(resultAction)) {
-        toast(`Registered with email: ${formValues.email}`, { type: 'success' });
+        toast(`Registered with email: ${formValues.email}`, {
+          type: 'success',
+        });
       } else if (signUp.rejected.match(resultAction) && resultAction.payload) {
         const errorMessage = resultAction.payload.error;
 

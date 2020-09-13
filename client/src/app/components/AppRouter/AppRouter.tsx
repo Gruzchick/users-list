@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+
 import { AuthRoute } from './AuthRoute';
 import { NotAuthRoute } from './NotAuthRoute';
 

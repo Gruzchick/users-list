@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
-import { API_URL } from '../../api/constants';
 import {
   CreateUserRequest,
   CreateUserResponse,

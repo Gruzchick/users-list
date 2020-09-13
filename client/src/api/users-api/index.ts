@@ -1,2 +1,1 @@
-export * from './usersApi';
-export * from './types';
+export { usersApi } from './usersApi';

@@ -1,16 +1,28 @@
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 
-import { createGetApiUrl } from '../utils';
-import { CreateUserRequest, CreateUserResponse } from './types';
+import { createGetApiUrl } from '../helpers';
+import { httpClient } from '../http-client';
+import {
+  CreateUserRequest,
+  CreateUserResponse,
+  GetUserResponse,
+} from './types';
 
-const USERS_URL = 'users';
-const getApiUrl = createGetApiUrl(USERS_URL);
+const getApiUrl = createGetApiUrl('users');
 
-export class UsersApi {
+class UsersApi {
   async createUser(
     credentials: CreateUserRequest,
   ): Promise<AxiosResponse<CreateUserResponse>> {
-    return axios.post<CreateUserResponse>(getApiUrl(), credentials);
+    return httpClient.requestWithoutAuthorization<CreateUserResponse>({
+      method: 'POST',
+      url: getApiUrl(),
+      data: credentials,
+    });
+  }
+
+  async getUser(userId: number): Promise<AxiosResponse<GetUserResponse>> {
+    return httpClient.get<GetUserResponse>(getApiUrl(userId));
   }
 }
 
