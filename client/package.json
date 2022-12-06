@@ -83,7 +83,7 @@
     "jss-plugin-template": "^10.3.0",
     "lint-staged": "10.2.11",
     "prettier": "^2.0.5",
-    "qs": "^6.9.4",
+    "qs": "^6.9.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.21",
